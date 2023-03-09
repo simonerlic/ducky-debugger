@@ -1,28 +1,70 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+import Navigation from '../components/Navigation.astro';
+import Monaco from '../components/Monaco.astro';
 import Duck from '../components/Duck.astro';
 import Chat from '../components/Chat.astro';
 ---
 
 <Layout title="Debug with a duck">
 	<main>
-		<h1>Debug via <span class="text-gradient">Duck</span></h1>
-		<div class="instructions">
-			<h2>Select a file to help debug</h2>
-			<input type="file" class="hide_file">
+		<Navigation />
+		<div class="h-screen w-screen p-5">
+			
+
+			<!-- A div that splits the content into two columns -->
+			<div class="flex columns-2 ">
+				<div class="w-full p-5 h-screen">
+					<div id="instructions">
+						<div class="rounded-lg shadow-md bg-white max-w-screen-md p-5">
+							<h2 class="text-xl font-sans font-bold"><span class="text-transparent bg-clip-text bg-gradient-to-br from-yellow-400 to-orange-500">Let's get quacking</span></h2>
+							<hr>
+							<br>
+							<p>
+								To get started with the ducky debugger, simply paste the problem code in the code editor
+								below. Then, talk through the code with the duck line by line- don't worry, the duck will
+								let you know where you went wrong.
+							</p>
+							<br>
+							<button id="tutorial-ok" class="rounded-md bg-gradient-to-br from-yellow-400 to-orange-500 p-2 pl-4 pr-4 text-white">Ok!</button>
+						</div>
+						<br>
+					</div>
+					
+					<Monaco />
+				</div>
+				<div class="w-full p-5 h-screen">
+					<div class="h-10"></div>
+					<Duck />
+					<div class="h-10"></div>
+					<Chat />
+				</div>
+			</div>
 		</div>
-		<div class="h-10"></div>
-		<Duck />
-		<div class="h-10"></div>
-		<Chat />
 	</main>
 </Layout>
+
+<script>
+	// When user clicks "ok!", delete the instructions (typescript)
+	const okButton = document.getElementById('tutorial-ok');
+	const instructions = document.getElementById('instructions');
+
+	if (!okButton || !instructions) {
+		throw new Error('Could not find instructions or ok button');
+	}
+
+	okButton.addEventListener('click', () => {
+		instructions.remove();
+	});
+
+	print()
+
+</script>
 
 <style>
 	main {
 		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
 	}
 	h1 {
 		font-size: 3rem;

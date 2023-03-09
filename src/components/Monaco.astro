@@ -1,0 +1,21 @@
+<div id="container" class="h-1/2 rounded-lg shadow-lg overflow-hidden"></div>
+
+<script>
+    /* import monaco editor */
+
+    import * as monaco from 'monaco-editor/esm/vs/editor/editor.api.js';
+
+    const text = `function hello() {
+        alert('Hello world!');
+    }`;
+
+    // Hover on each property to see its docs!
+    monaco.editor.create(document.getElementById("container") as HTMLElement, {
+        value: text,
+        language: "javascript",
+        automaticLayout: true,
+    });
+
+    export {text};
+
+</script>
