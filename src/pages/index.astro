@@ -1,20 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
-
-import 
+import Duck from '../components/Duck.astro';
+import Chat from '../components/Chat.astro';
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Debug with a duck">
 	<main>
 		<h1>Debug via <span class="text-gradient">Duck</span></h1>
 		<div class="instructions">
-			<p>Select a file to help debug</p>
+			<h2>Select a file to help debug</h2>
 			<input type="file" class="hide_file">
 		</div>
-		<div>
-			<canvas></canvas>
-		</div>
+		<div class="h-10"></div>
+		<Duck />
+		<div class="h-10"></div>
+		<Chat />
 	</main>
 </Layout>
 
