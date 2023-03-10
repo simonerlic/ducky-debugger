@@ -9,15 +9,14 @@ import Chat from '../components/Chat.astro';
 
 <Layout title="Debug with a duck">
 	<main>
-		<Navigation />
-		<div class="h-screen w-screen p-5">
-			
+		<div class="h-screen w-screen">
+			<Navigation />
 
 			<!-- A div that splits the content into two columns -->
-			<div class="flex columns-2 ">
-				<div class="w-full p-5 h-screen">
+			<div class="flex columns-2 p-5">
+				<div class="w-full p-5 flex-grow">
 					<div id="instructions">
-						<div class="rounded-lg shadow-md bg-white max-w-screen-md p-5">
+						<div class="rounded-lg shadow-md bg-white p-5">
 							<h2 class="text-xl font-sans font-bold"><span class="text-transparent bg-clip-text bg-gradient-to-br from-yellow-400 to-orange-500">Let's get quacking</span></h2>
 							<hr>
 							<br>
@@ -34,7 +33,7 @@ import Chat from '../components/Chat.astro';
 					
 					<Monaco />
 				</div>
-				<div class="w-full p-5 h-screen">
+				<div class="w-full p-5 flex-grow">
 					<div class="h-10"></div>
 					<Duck />
 					<div class="h-10"></div>
@@ -46,6 +45,8 @@ import Chat from '../components/Chat.astro';
 </Layout>
 
 <script>
+	import callAI from '../scripts/callAI'
+
 	// When user clicks "ok!", delete the instructions (typescript)
 	const okButton = document.getElementById('tutorial-ok');
 	const instructions = document.getElementById('instructions');
@@ -56,6 +57,7 @@ import Chat from '../components/Chat.astro';
 
 	okButton.addEventListener('click', () => {
 		instructions.remove();
+		callAI();
 	});
 
 	print()
