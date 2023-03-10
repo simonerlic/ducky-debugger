@@ -5,21 +5,21 @@ import Navigation from '../components/Navigation.astro';
 import Monaco from '../components/Monaco.astro';
 import Duck from '../components/Duck.astro';
 import Chat from '../components/Chat.astro';
+import Response from '../components/Response.astro';
 ---
 
 <Layout title="Debug with a duck">
 	<main>
-		<div class="h-screen w-screen">
-			<Navigation />
-
+		<Navigation />
+		<div class="h-screen w-screen flexbox">
+			<br>
+			<br>
 			<!-- A div that splits the content into two columns -->
-			<div class="flex columns-2 p-5">
-				<div class="w-full p-5 flex-grow">
+			<div class="flex sm:columns-1 lg:columns-2 md:columns-1 p-5">
+				<div class="w-full max-h-screen p-5">
 					<div id="instructions">
 						<div class="rounded-lg shadow-md bg-white p-5">
-							<h2 class="text-xl font-sans font-bold"><span class="text-transparent bg-clip-text bg-gradient-to-br from-yellow-400 to-orange-500">Let's get quacking</span></h2>
-							<hr>
-							<br>
+							<h2 class="text-xl font-sans font-bold"><span class="text-transparent bg-clip-text bg-gradient-to-br from-yellow-400 to-orange-500">Let's get quacking!</span></h2>
 							<p>
 								To get started with the ducky debugger, simply paste the problem code in the code editor
 								below. Then, talk through the code with the duck line by line- don't worry, the duck will
@@ -30,14 +30,13 @@ import Chat from '../components/Chat.astro';
 						</div>
 						<br>
 					</div>
-					
 					<Monaco />
+					<br>
+					<Chat />
 				</div>
 				<div class="w-full p-5 flex-grow">
-					<div class="h-10"></div>
+					<Response />
 					<Duck />
-					<div class="h-10"></div>
-					<Chat />
 				</div>
 			</div>
 		</div>
@@ -45,8 +44,6 @@ import Chat from '../components/Chat.astro';
 </Layout>
 
 <script>
-	import callAI from '../scripts/callAI'
-
 	// When user clicks "ok!", delete the instructions (typescript)
 	const okButton = document.getElementById('tutorial-ok');
 	const instructions = document.getElementById('instructions');
@@ -57,11 +54,7 @@ import Chat from '../components/Chat.astro';
 
 	okButton.addEventListener('click', () => {
 		instructions.remove();
-		callAI();
 	});
-
-	print()
-
 </script>
 
 <style>

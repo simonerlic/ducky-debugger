@@ -24,7 +24,7 @@
     scene.clearColor = new BABYLON.Color4(0, 0, 0, 0);
   
     BABYLON.SceneLoader.ImportMesh("", "src/components/models/", "lowpoly_yellow_duck.gltf", scene, function (meshes) {
-        var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI/1, Math.PI / 2.3, 12, BABYLON.Vector3.Zero(), scene);
+        var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI/1.2, Math.PI / 2.3, 6, BABYLON.Vector3.Zero(), scene);
         // camera.attachControl(canvas, true);
     
         var light = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(0, 1, 0), scene);

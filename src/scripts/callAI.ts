@@ -11,6 +11,13 @@ function callAI() {
 
     console.log(text);
 
+    // Use the text from the input box to create a new <p> element in the output div
+    const outputDiv = document.getElementById("output") as HTMLDivElement;
+    const newP = document.createElement("p");
+    newP.innerHTML = "User: " + text;
+    outputDiv.appendChild(newP);
+
+
     // const fullText = monacoText + " " + text;
     // const aiText = document.getElementById("aiText") as HTMLInputElement;
     // aiText.value = "Thinking...";

@@ -1,3 +1,22 @@
 <div class="rounded-lg shadow-md bg-white p-5">
-    <textarea id="inputText" class="w-full"></textarea>
+    <h2 class="text-xl font-sans font-bold"><span class="text-transparent bg-clip-text bg-gradient-to-br from-yellow-400 to-orange-500">Tell the duck about your code</span></h2>
+    <br>
+    <div>
+        <textarea id="inputText" class="w-full bg-gray-50 p-2 rounded-md font-mono" placeholder="Put your explanation here"></textarea>
+        <br><br>
+        <button id="send-message" class="rounded-md bg-gradient-to-br from-yellow-400 to-orange-500 p-2 pl-4 pr-4 text-white">Send</button>
+    </div>   
 </div>
+
+<script>
+    import callAI from '../scripts/callAI'
+
+    // On press of button, call the "callAI" function
+    const sendButton = document.getElementById('send-message');
+
+    if (!sendButton) {
+		throw new Error('Could not find send button');
+	}
+
+    if(sendButton) sendButton.addEventListener('click', callAI);
+</script>
