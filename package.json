@@ -16,12 +16,12 @@
     "babylonjs": "^5.49.2",
     "babylonjs-loaders": "^5.49.2",
     "babylonjs-materials": "^5.49.2",
-    "dotenv": "^16.0.3",
     "install": "^0.13.0",
     "monaco-editor": "^0.36.1",
     "npm": "^9.6.1",
     "openai": "^3.2.1",
-    "tailwindcss": "^3.2.7"
+    "tailwindcss": "^3.2.7",
+    "wrangler": "^2.12.2"
   },
   "devDependencies": {
     "@types/node": "^18.15.0"
