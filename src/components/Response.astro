@@ -1,3 +1,15 @@
 <div id="output" class="rounded-lg shadow-md bg-white p-5 h-[40vh] overflow-auto scroll-smooth">
     <p class="text-transparent bg-clip-text bg-gradient-to-br from-yellow-400 to-orange-500 ">Hello! I'm excited to chat with you!</p>
 </div>
+
+<script>
+    // Function to add append a new message to the chat, and scroll to the bottom
+    export function addMessage(message) {
+        const output = document.getElementById('output') as HTMLDivElement;
+        const p = document.createElement('p') as HTMLParagraphElement;
+        p.innerText = message;
+
+        output.appendChild(p);
+        p.scrollIntoView();
+    }
+</script>

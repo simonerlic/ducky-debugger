@@ -9,14 +9,24 @@
 </div>
 
 <script>
-    import callAI from '../scripts/callAI'
+    // import the monaco editor
+    import * as monaco from 'monaco-editor'
 
-    // On press of button, call the "callAI" function
-    const sendButton = document.getElementById('send-message');
+    // Grab the text input and the text in the monaco editor
+    let textInput = document.getElementById('inputText') as HTMLInputElement
+    let codeText = monaco.editor.getModels()[0].getValue()
 
-    if (!sendButton) {
-		throw new Error('Could not find send button');
-	}
-
-    if(sendButton) sendButton.addEventListener('click', callAI);
+    // Add an event listener to the send button
+    document.getElementById('send-message')!.addEventListener('click', () => {
+        fetch('/api/completion', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                text: textInput.value,
+                code: codeText,
+            }),
+        })
+    })
 </script>
