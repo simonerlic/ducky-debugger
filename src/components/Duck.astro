@@ -19,12 +19,12 @@
     var engine = new BABYLON.Engine(canvas, true);
     var scene = new BABYLON.Scene(engine);
 
-    canvas.innerHTML = "Your browser does not support WebGL";
+    canvas.innerHTML = "Your browser does not support WebGL :(";
 
     scene.clearColor = new BABYLON.Color4(0, 0, 0, 0);
   
     BABYLON.SceneLoader.ImportMesh("", "src/components/models/", "lowpoly_yellow_duck.gltf", scene, function (meshes) {
-        var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI/1.2, Math.PI / 2.3, 6, BABYLON.Vector3.Zero(), scene);
+        var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI+3.2, Math.PI / 2.3, 6, BABYLON.Vector3.Zero(), scene);
         // camera.attachControl(canvas, true);
     
         var light = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(0, 1, 0), scene);
@@ -44,15 +44,19 @@
         plane.rotation.x = Math.PI / 2;
         plane.material = new BABYLON.StandardMaterial("planeMat", scene);
         plane.material.alpha = 0.3;
-        plane.material.diffuseColor = new BABYLON.Color3(0, 0.1, 1);
+        plane.material.diffuseColor = new BABYLON.Color3(0, 0.12, 1);
+
+        // Warp the plane to create large
+        
 
         // Animate the mesh to rotate around the center point
         scene.registerBeforeRender(function () {
-            mesh.rotateAround(center, BABYLON.Axis.Y, 0.001);
-            
-            // Make mesh sway back and forth
-            mesh.position.y = Math.sin(new Date().getTime() / 1000) * 0.1;
-            
+
+            // Make mesh bob left and right
+            mesh.rotation = new BABYLON.Vector3(0, 0, (Math.sin(new Date().getTime() / 1000) * 0.05))
+
+            // Make mesh bob on water
+            mesh.position.y = Math.sin(new Date().getTime() / 1000) * 0.07;
             
         });
 
