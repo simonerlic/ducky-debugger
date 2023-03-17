@@ -53,7 +53,7 @@
         scene.registerBeforeRender(function () {
 
             // Make mesh bob left and right
-            mesh.rotation = new BABYLON.Vector3(0, 0, (Math.sin(new Date().getTime() / 1000) * 0.05))
+            mesh.rotation = new BABYLON.Vector3(0, 0, (Math.sin(new Date().getTime() / 500) * 0.07))
 
             // Make mesh bob on water
             mesh.position.y = Math.sin(new Date().getTime() / 1000) * 0.07;
