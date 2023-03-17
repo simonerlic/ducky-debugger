@@ -5,13 +5,20 @@ import dotenv from "dotenv";
 dotenv.config();
 
 let messages = [
-    {role: "system", content: "You are an AI rubber duck debugger. You listen to a user's expanation of their code, and point out the lines where a flaw is found."}
+    {role: "system", content: "You are an AI rubber duck debugger. You listen to a user's expanation of their code, and point out the lines where a flaw is found. Do not give them the answer immediately."}
 ];
+
+let firstMessage = true;
 
 // Path: src/pages/api/completion.ts
 export async function post({ request }: { request: any }) {
     // Take data from the request, add it to the messages array, and send it to the AI
     const body = await request.json();
+
+    if (firstMessage) {
+        messages.push({role: "user", content: body.code});
+        firstMessage = false;
+    }
 
     messages.push({role: "user", content: body.text});
 
@@ -21,13 +28,9 @@ export async function post({ request }: { request: any }) {
     console.log(resp.data.choices[0].message?.content!)
 
     // Add the AI's response to the messages array
-    messages.push({role: "System", content: resp.data.choices[0].message?.content!});
+    messages.push({role: "system", content: resp.data.choices[0].message?.content as string});
 
-    return {
-        body: JSON.stringify({
-          message: 'Hello from Astro!',
-        }),
-    };
+    console.log(messages);
 }
 
 async function callAI() {
@@ -39,7 +42,7 @@ async function callAI() {
 
     const completion = await openai.createChatCompletion({
         model: "gpt-3.5-turbo",
-        messages: messages,
+        messages: messages as any,
     });
 
     return completion;

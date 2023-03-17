@@ -10,7 +10,6 @@
 
 <script>
     // import the monaco editor
-    import type { Console } from 'console'
     import * as monaco from 'monaco-editor'
 
     // Grab the text input and the text in the monaco editor
@@ -29,10 +28,5 @@
                 code: codeText,
             }),
         });
-
-        // Log that the message was sent
-        console.log('Message sent')
-        console.log('Text: ' + textInput.value)
-        console.log('Code: ' + codeText)
     })
 </script>
