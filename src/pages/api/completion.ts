@@ -31,6 +31,13 @@ export async function post({ request }: { request: any }) {
     messages.push({role: "system", content: resp.data.choices[0].message?.content as string});
 
     console.log(messages);
+
+    return {
+        status: 200,
+        body: JSON.stringify({
+            message: resp.data.choices[0].message?.content as string,
+        }),
+    };
 }
 
 async function callAI() {

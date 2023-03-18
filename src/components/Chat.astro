@@ -12,13 +12,18 @@
     // import the monaco editor
     import * as monaco from 'monaco-editor'
 
-    // Grab the text input and the text in the monaco editor
-    let textInput = document.getElementById('inputText') as HTMLInputElement
-    let codeText = monaco.editor.getModels()[0].getValue()
+    async function sendMessage() {
+        // Ensure the editor is initialized
+        while (monaco.editor.getModels().length === 0) {
+            await new Promise(resolve => setTimeout(resolve, 100));
+        }
 
-    // Add an event listener to the send button
-    document.getElementById('send-message')!.addEventListener('click', () => {
-        fetch('/api/completion', {
+        // Grab the text input and the text in the monaco editor
+        let textInput = document.getElementById('inputText') as HTMLInputElement;
+        let codeText = monaco.editor.getModels()[0].getValue();
+
+        // Send the request to the API
+        let response = await fetch('/api/completion', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -28,5 +33,21 @@
                 code: codeText,
             }),
         });
-    })
+
+        // Get the JSON response from the API
+        const data = await response.json();
+
+        // Display the AI's response in the "response-container" div
+        const output = document.getElementById('output') as HTMLDivElement;
+        const p = document.createElement('p') as HTMLParagraphElement;
+        // append the time to the inner text
+        p.innerText = new Date().toLocaleTimeString() + ": " + data.message;
+        p.classList.add('text-transparent bg-clip-text bg-gradient-to-br from-yellow-400 to-orange-500');
+
+        output.appendChild(p);
+        p.scrollIntoView();
+    }
+
+    // Add an event listener to the send button
+    document.getElementById('send-message')!.addEventListener('click', sendMessage);
 </script>
