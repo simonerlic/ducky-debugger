@@ -1,15 +1,54 @@
-<div id="output" class="rounded-lg shadow-md bg-white p-5 h-[40vh] overflow-auto scroll-smooth">
-    <p class="text-transparent bg-clip-text bg-gradient-to-br from-yellow-400 to-orange-500">Hello! I'm excited to chat with you!</p>
+<div class="rounded-lg shadow-md bg-white p-5 h-[40vh] overflow-auto scroll-smooth">
+    <!-- Div with title on left side, and button on right -->
+    <div class="flex justify-between items-center">
+        <h2 class="text-xl font-sans font-bold"><span class="text-transparent bg-clip-text bg-gradient-to-br from-yellow-400 to-orange-500">Chat Log</span></h2>
+        
+        <!-- Reset button -->
+        <button id="reset" class="px-2 rounded-md bg-gradient-to-br from-yellow-400 to-orange-500 text-white">Reset</button>
+    </div>
+    <div class="h-3"></div>
+    <hr>
+    <div class="h-3"></div>
+ 
+    <div id="output">
+        <p class="text-transparent bg-clip-text bg-gradient-to-br from-yellow-400 to-orange-500">Hi! I'm excited to help you debug your code!</p>
+    </div>
 </div>
 
 <script>
-    // Function to add append a new message to the chat, and scroll to the bottom
-    export function addMessage(message) {
-        const output = document.getElementById('output') as HTMLDivElement;
-        const p = document.createElement('p') as HTMLParagraphElement;
-        p.innerText = message;
+    // Get the reset button
+    var resetButton = document.getElementById("reset");
 
-        output.appendChild(p);
-        p.scrollIntoView();
+    // Add an event listener to the reset button
+    resetButton?.addEventListener("click", reset);
+
+    // Function to reset the chat log
+    async function reset() {
+        // Get the output div
+        var output = document.getElementById("output");
+        
+        // Remove all the children of the output div
+        while (output?.firstChild) {
+            output.removeChild(output.firstChild);
+        }
+
+        await fetch('/api/completion', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                action: 'clear',
+            }),
+        });
+
+        // Add a new message to the output div
+        var message = document.createElement("p");
+        message.classList.add("text-transparent", "bg-clip-text", "bg-gradient-to-br", "from-yellow-400", "to-orange-500");
+        message.textContent = "I'm all reset and ready to help out!";
+
+        output?.appendChild(message);
+
+        
     }
 </script>

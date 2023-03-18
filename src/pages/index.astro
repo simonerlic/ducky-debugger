@@ -16,10 +16,13 @@ import Response from '../components/Response.astro';
 			<br>
 			<!-- A div that splits the content into two columns -->
 			<div class="flex sm:columns-1 lg:columns-2 md:columns-1 p-5">
-				<div class="w-full max-h-screen p-5">
+				<div class="w-full max-h-full p-5">
 					<div id="instructions">
 						<div class="rounded-lg shadow-md bg-white p-5">
 							<h2 class="text-xl font-sans font-bold"><span class="text-transparent bg-clip-text bg-gradient-to-br from-yellow-400 to-orange-500">Let's get quacking!</span></h2>
+							<div class="h-3"></div>
+							<hr>
+							<div class="h-3"></div>
 							<p>
 								To get started with the ducky debugger, simply paste the problem code in the code editor
 								below. Then, talk through the code with the duck line by line- don't worry, the duck will
@@ -34,7 +37,7 @@ import Response from '../components/Response.astro';
 					<br>
 					<Chat />
 				</div>
-				<div class="w-full p-5 flex-grow">
+				<div class="w-full max-h-full p-5">
 					<Response />
 					<Duck />
 				</div>

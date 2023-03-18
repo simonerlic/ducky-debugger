@@ -20,6 +20,22 @@ export async function post({ request }: { request: any }) {
         firstMessage = false;
     }
 
+    // Check if the request is to clear the chat history
+    if (body.action === 'clear') {
+        messages = [
+            {role: "system", content: "You are an AI rubber duck debugger. You listen to a user's expanation of their code, and point out the lines where a flaw is found. Do not give them the answer immediately."}
+        ];
+
+        firstMessage = true;
+
+        return {
+            status: 200,
+            body: JSON.stringify({
+                message: 'Chat history cleared',
+            }),
+        };
+    }
+
     messages.push({role: "user", content: body.text});
 
     // Call the AI

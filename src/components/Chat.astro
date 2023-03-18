@@ -1,6 +1,8 @@
 <div class="rounded-lg shadow-md bg-white p-5">
-    <h2 class="text-xl font-sans font-bold"><span class="text-transparent bg-clip-text bg-gradient-to-br from-yellow-400 to-orange-500">Tell the duck about your code</span></h2>
-    <br>
+    <h2 class="text-xl font-sans font-bold"><span class="text-transparent bg-clip-text bg-gradient-to-br from-yellow-400 to-orange-500">Talk to the duck about your code</span></h2>
+    <div class='h-3'></div>
+    <hr>
+    <div class='h-3'></div>
     <div>
         <textarea id="inputText" class="w-full bg-gray-50 p-2 rounded-md font-mono" placeholder="Put your explanation here"></textarea>
         <br><br>
@@ -22,6 +24,15 @@
         let textInput = document.getElementById('inputText') as HTMLInputElement;
         let codeText = monaco.editor.getModels()[0].getValue();
 
+        const output = document.getElementById('output') as HTMLDivElement;
+        const query = document.createElement('p') as HTMLParagraphElement;
+        query.innerText = textInput.value;
+
+        output.appendChild(document.createElement('br'));
+        output.appendChild(document.createElement('hr'));
+        output.appendChild(query);
+        output.appendChild(document.createElement('br'));
+
         // Send the request to the API
         let response = await fetch('/api/completion', {
             method: 'POST',
@@ -37,14 +48,19 @@
         // Get the JSON response from the API
         const data = await response.json();
 
-        // Display the AI's response in the "response-container" div
-        const output = document.getElementById('output') as HTMLDivElement;
-        const p = document.createElement('p') as HTMLParagraphElement;
-        // append the time to the inner text
-        p.innerText = new Date().toLocaleTimeString() + ": " + data.message;
-        p.classList.add('text-transparent bg-clip-text bg-gradient-to-br from-yellow-400 to-orange-500');
+        console.log(data.message)
 
+        // Display the AI's response in the "response-container" div
+        const p = document.createElement('p') as HTMLParagraphElement;
+
+        p.innerText = data.message;
+        p.classList.add('text-transparent', 'bg-clip-text', 'bg-gradient-to-br', 'from-yellow-400', 'to-orange-500');
+
+        output.appendChild(document.createElement('br'));
+        output.appendChild(document.createElement('hr'));
         output.appendChild(p);
+        output.appendChild(document.createElement('br'));
+        
         p.scrollIntoView();
     }
 
