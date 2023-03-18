@@ -15,6 +15,15 @@
     import * as monaco from 'monaco-editor'
 
     async function sendMessage() {
+
+        // Show the typing indicator
+        const output = document.getElementById('output') as HTMLDivElement;
+        
+        output.appendChild(document.createElement('hr'));
+        output.appendChild(document.createElement('br'));
+        const typingIndicator = document.getElementById('typing-indicator') as HTMLDivElement;
+        typingIndicator.style.display = 'inline'; // Show typing indicator
+
         // Ensure the editor is initialized
         while (monaco.editor.getModels().length === 0) {
             await new Promise(resolve => setTimeout(resolve, 100));
@@ -25,15 +34,14 @@
         let codeText = monaco.editor.getModels()[0].getValue();
 
         // Create a new paragraph element to display the user's query
-        const output = document.getElementById('output') as HTMLDivElement;
         const query = document.createElement('p') as HTMLParagraphElement;
         query.innerText = textInput.value;
 
         // Add the query to the output div
-        output.appendChild(document.createElement('br'));
-        output.appendChild(document.createElement('hr'));
         output.appendChild(query);
         output.appendChild(document.createElement('br'));
+
+        
 
         // Send the request to the API
         let response = await fetch('/api/completion', {
@@ -50,14 +58,17 @@
         // Get the JSON response from the API
         const data = await response.json();
 
+        typingIndicator.style.display = 'none';
+
         // Display the AI's response in the "response-container" div
         const p = document.createElement('p') as HTMLParagraphElement;
         p.innerText = data.message;
         p.classList.add('text-transparent', 'bg-clip-text', 'bg-gradient-to-br', 'from-yellow-400', 'to-orange-500');
 
         // Add the response to the output div
-        output.appendChild(document.createElement('br'));
+        
         output.appendChild(document.createElement('hr'));
+        output.appendChild(document.createElement('br'));
         output.appendChild(p);
         output.appendChild(document.createElement('br'));
         
