@@ -41,13 +41,10 @@ export async function post({ request }: { request: any }) {
     // Call the AI
     let resp = await callAI();
 
-    console.log(resp.data.choices[0].message?.content!)
-
     // Add the AI's response to the messages array
     messages.push({role: "system", content: resp.data.choices[0].message?.content as string});
 
-    console.log(messages);
-
+    // Return the AI's response
     return {
         status: 200,
         body: JSON.stringify({
@@ -58,7 +55,7 @@ export async function post({ request }: { request: any }) {
 
 async function callAI() {
     const configuration = new Configuration({
-        organization: "org-wr95k3KKxaBYkVZtK9FfTFAL",
+        organization: process.env.OPENAI_ORG,
         apiKey: process.env.OPENAI_API,
     });
     const openai = new OpenAIApi(configuration);

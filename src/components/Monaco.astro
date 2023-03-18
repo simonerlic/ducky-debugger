@@ -11,11 +11,13 @@
     /* import monaco editor */
     import * as monaco from 'monaco-editor/esm/vs/editor/editor.api.js';
 
+    // Add a basic temporary hello world function
     let text = 
     `function hello() {
     alert('Hello world!');
 }`;
 
+    // Create the editor
     monaco.editor.create(document.getElementById("container") as HTMLElement, {
         value: text,
         language: "none",

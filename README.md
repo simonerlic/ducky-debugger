@@ -1,55 +1,52 @@
-# Astro Starter Kit: Basics
+# The Ducky Debugger
 
-```
-npm create astro@latest -- --template basics
-```
+Hi, and welcome to my little rubber ducky debugger project!
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+If you want to get right into it, head over to the [ducky-debugger](quickstart) section.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## About
 
-![basics](https://user-images.githubusercontent.com/4677417/186188965-73453154-fdec-4d6b-9c34-cb35c248ae5b.png)
+For those who don't know, the rubber ducky technique is a way to debug your code by talking to physical rubber ducky toy.
+The idea behind it is that by forcing yourself to talk through your code, you can find bugs and errors that you would otherwise miss.
 
+Now, that's cool and all, but I wanted to take it a step further and modernize it. I wanted to be able to debug my code without having to talk to a rubber ducky- instead I wanted to be able to debug my code by talking to my computer with a photo of a rubber duck and have it tell me exactly _how_ and _why_ my code is always broken.
 
-## 🚀 Project Structure
+_Welcome to the future._
 
-Inside of your Astro project, you'll see the following folders and files:
+## Quickstart
 
-```
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+To get started, clone this repository to a location of your choice, and run the following commands:
+
+```bash
+$ cd ducky-debugger
+$ npm i
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+This will clone the repository and install the dependencies.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Now, you need to add your API and organization ID the environment. To do this, create a file named `.env` at the root of the project, and add the following:
 
-Any static assets, like images, can be placed in the `public/` directory.
+```dotenv
+OPENAI_ORG = *your organization ID here*
+OPENAI_API = *your API key here*
+```
 
-## 🧞 Commands
+You can get your API key and organization ID from the [OpenAI dashboard](https://beta.openai.com/dashboard).
 
-All commands are run from the root of the project, from a terminal:
+Now, with that all set up, all you have left to do is start the Astro server and open the website in your browser.
 
-| Command                | Action                                           |
-| :--------------------- | :----------------------------------------------- |
-| `npm install`          | Installs dependencies                            |
-| `npm run dev`          | Starts local dev server at `localhost:3000`      |
-| `npm run build`        | Build your production site to `./dist/`          |
-| `npm run preview`      | Preview your build locally, before deploying     |
-| `npm run astro ...`    | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro --help` | Get help using the Astro CLI                     |
+```bash
+$ npm start
+```
 
-## 👀 Want to learn more?
+Enjoy!
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Contributing
+
+This is a very early version of this project, and there's a lot of work to be done. If you want to contribute, feel free to open a PR or an issue.
+
+Keep in mind, this was both my first time working with Astro (amazing by the way, you can read more about it [here](https://astro.build/)) and my first time working with OpenAI's API. Nobody's first project in something is perfect, so I'm sure there's a lot of room for improvement, so seriously feel free to open a PR or an issue when you inevitably find something that I did poorly.
+
+If you want to add a feature, please open an issue first so we can discuss it.
+
+If you want to fork this project, please give credit to me and link back to this repository (and also let me know, I'd love to see what you do with it)!
