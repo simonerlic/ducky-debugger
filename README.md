@@ -2,7 +2,7 @@
 
 Hi, and welcome to my little rubber ducky debugger project!
 
-If you want to get right into it, head over to the [ducky-debugger](quickstart) section.
+If you want to get right into it, head over to the [Quickstart](#quickstart) section. Otherwise, read on to learn more about the project!
 
 ## About
 
