@@ -1,52 +1,69 @@
 # The Ducky Debugger
 
-Hi, and welcome to my little rubber ducky debugger project!
-
-If you want to get right into it, head over to the [Quickstart](#quickstart) section. Otherwise, read on to learn more about the project!
+Hi, and welcome to my rubber ducky debugger project!
 
 ## About
 
-For those who don't know, the rubber ducky technique is a way to debug your code by talking to physical rubber ducky toy.
-The idea behind it is that by forcing yourself to talk through your code, you can find bugs and errors that you would otherwise miss.
+If you're eager to dive right in, head over to the [Quickstart](#quickstart) section. Otherwise, continue reading to learn more about the project!
+About
 
-Now, that's cool and all, but I wanted to take it a step further and modernize it. I wanted to be able to debug my code without having to talk to a rubber ducky- instead I wanted to be able to debug my code by talking to my computer with a photo of a rubber duck and have it tell me exactly _how_ and _why_ my code is always broken.
+For those who aren't familiar, the rubber ducky technique is a method of debugging code by talking to a physical rubber ducky toy.
+The rationale behind this approach is that by forcing yourself to verbally walk through your code, you can identify bugs and errors that might otherwise go unnoticed.
 
-_Welcome to the future._
+While that's fun and all, I wanted to take it a step further and bring it into the modern age. Instead of chatting with a _physical_ rubber ducky, I envisioned debugging my code by conversing with a _render_ of a rubber duck on my computer, and having it explain precisely _how_ and _why_ my code is broken.
+
+_Say hello to the future of debugging._
 
 ## Quickstart
 
-To get started, clone this repository to a location of your choice, and run the following commands:
+To get started, follow these simple steps:
+
+1. Clone this repository to your desired location.
+2. Run the following commands:
 
 ```bash
 $ cd ducky-debugger
 $ npm i
 ```
 
-This will clone the repository and install the dependencies.
+This process clones the repository and installs the dependencies.
 
-Now, you need to add your API and organization ID the environment. To do this, create a file named `.env` at the root of the project, and add the following:
+3. Add your API and organization ID to the environment. To do this, create a file named `.env` at the root of the project and include the following:
 
-```dotenv
+```
 OPENAI_ORG = *your organization ID here*
 OPENAI_API = *your API key here*
 ```
 
-You can get your API key and organization ID from the [OpenAI dashboard](https://beta.openai.com/dashboard).
+Note: You can obtain your API key and organization ID from the [OpenAI dashboard](https://platform.openai.com/account/api-keys).
 
-Now, with that all set up, all you have left to do is start the Astro server and open the website in your browser.
+4. With everything set up, start the Astro server and open the website in your browser.
 
 ```bash
 $ npm start
 ```
 
-Enjoy!
+And there you go! Enjoy playing around with the debugger!
+
+## Features
+
+The Ducky Debugger offers a modern and interactive debugging experience, thanks to its AI-powered capabilities. Some of its main features include:
+
+1. **AI-powered debugging:** The Ducky Debugger is powered by OpenAI's GPT-3.5-turbo, enabling it to understand your code and provide useful feedback on potential issues and improvements.
+2. **Monaco Text Editor:** The Ducky Debugger uses the Monaco Text Editor, which is a lightweight, embeddable code editor that supports syntax highlighting, code completion, and more. This is the same engine that powers VSCode!
+3. **Conversational interface:** Interact with the Ducky Debugger through a user-friendly chat interface, making the debugging process feel more like a conversation with a helpful friend than a tedious chore.
+4. **Customizable UI:** Since the project is built in Astro, the project's UI can be easily customized to suit your preferences. For example, you can change the color scheme, add your own logo, or even add your own custom components.
 
 ## Contributing
 
-This is a very early version of this project, and there's a lot of work to be done. If you want to contribute, feel free to open a PR or an issue.
+As an early version of this project, there's plenty of room for growth and development. If you're interested in contributing, feel free to open a PR or an issue.
 
-Keep in mind, this was both my first time working with Astro (amazing by the way, you can read more about it [here](https://astro.build/)) and my first time working with OpenAI's API. Nobody's first project in something is perfect, so I'm sure there's a lot of room for improvement, so seriously feel free to open a PR or an issue when you inevitably find something that I did poorly.
+Keep in mind that this was my first experience working with both Astro (which is amazing, by the way—learn more here) and OpenAI's API. First-time projects are rarely perfect, so I'm sure there's ample opportunity for improvement. Don't hesitate to open a PR or an issue if you come across something that could be enhanced.
 
-If you want to add a feature, please open an issue first so we can discuss it.
+If you'd like to propose a new feature, please open an issue first so we can discuss it.
 
-If you want to fork this project, please give credit to me and link back to this repository (and also let me know, I'd love to see what you do with it)!
+In case you decide to fork this project, please give credit to me and link back to this repository (and let me know what you end up making with it— I'm excited to see what y'all create)!
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
