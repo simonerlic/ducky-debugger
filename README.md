@@ -1,6 +1,6 @@
 # The Ducky Debugger
 
-Hi, and welcome to my rubber ducky debugger project!
+Hi, and welcome to my rubber ducky debugger project! This project aims to create a digital debugging assistant that you can chat to over the web.
 
 ## About
 
