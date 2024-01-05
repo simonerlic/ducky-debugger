@@ -22,7 +22,7 @@
     "npm": "^9.6.1",
     "openai": "^3.2.1",
     "tailwindcss": "^3.2.7",
-    "wrangler": "^2.12.2"
+    "wrangler": "^2.20.2"
   },
   "devDependencies": {
     "@types/node": "^18.15.0"
