@@ -1,5 +1,5 @@
 // Grab text from monaco and the text from the input box, then send it to the AI
-import { Configuration, OpenAIApi } from "openai";
+import OpenAI from "openai";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -42,27 +42,26 @@ export async function post({ request }: { request: any }) {
     let resp = await callAI();
 
     // Add the AI's response to the messages array
-    messages.push({role: "system", content: resp.data.choices[0].message?.content as string});
+    messages.push({role: "system", content: resp.choices[0].message?.content as string});
 
     // Return the AI's response
     return {
         status: 200,
         body: JSON.stringify({
-            message: resp.data.choices[0].message?.content as string,
+            message: resp.choices[0].message?.content as string,
         }),
     };
 }
 
 async function callAI() {
-    const configuration = new Configuration({
-        organization: process.env.OPENAI_ORG,
-        apiKey: process.env.OPENAI_API,
+    const openai = new OpenAI({
+    organization: process.env.OPENAI_ORG,
+    apiKey: process.env.OPENAI_API,
     });
-    const openai = new OpenAIApi(configuration);
 
-    const completion = await openai.createChatCompletion({
-        model: "gpt-3.5-turbo",
-        messages: messages as any,
+    const completion = await openai.chat.completions.create({
+    model: "gpt-3.5-turbo",
+    messages: messages as any,
     });
 
     return completion;
