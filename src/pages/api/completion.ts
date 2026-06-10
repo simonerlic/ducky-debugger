@@ -55,13 +55,13 @@ export async function post({ request }: { request: any }) {
 
 async function callAI() {
     const openai = new OpenAI({
-    organization: process.env.OPENAI_ORG,
-    apiKey: process.env.OPENAI_API,
+        organization: process.env.OPENAI_ORG,
+        apiKey: process.env.OPENAI_API,
     });
 
     const completion = await openai.chat.completions.create({
-    model: "gpt-3.5-turbo",
-    messages: messages as any,
+        model: "gpt-3.5-turbo",
+        messages: messages as any,
     });
 
     return completion;
